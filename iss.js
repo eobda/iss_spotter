@@ -17,7 +17,21 @@ const fetchMyIP = function(callback) {
 };
 
 const fetchCoordsByIP = function(ip, callback) {
-  return;
+  request('http://ipwho.is/' + ip, (error, response, body) => {
+    if (error) return callback(error, null);
+
+    if (response.statusCode !== 200) {
+      callback(Error(`Status Code ${response.statusCode} when fetching IP. Response: ${body}`), null);
+      return;
+    }
+
+    const data = JSON.parse(body);
+    const output = {};
+    output.latitude = data.latitude;
+    output.longitude = data.longitude;
+    callback(null, output);
+    return;
+  });
 };
 
 module.exports = { fetchMyIP, fetchCoordsByIP };

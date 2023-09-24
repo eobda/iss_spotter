@@ -113,13 +113,21 @@ const nextISSTimesForMyLocation = function(callback) {
       return;
     }
 
-    fetchCoordsByIP(ip, (error, data) => {
+    fetchCoordsByIP(ip, (error, coords) => {
       if (error) {
         callback(error, null);
         return;
       }
 
-      console.log('It worked! Returned coordinates:', data);
+      fetchISSFlyOverTimes(coords, (error, data) => {
+        if (error) {
+          callback(error, null);
+          return;
+        }
+
+        console.log('It worked! Returned data:', data);
+      });
+
     });
   });
   

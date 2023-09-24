@@ -33,8 +33,11 @@ const fetchISSFlyOverTimes = function(body) {
 - Input: None
 - Returns: Promise for fly over data for users location
 */
-const nextISSTimesForMyLocation = function(body) {
-
+const nextISSTimesForMyLocation = function() {
+  return fetchMyIP()
+    .then(fetchCoordsByIP)
+    .then(fetchISSFlyOverTimes)
+    .then(body => console.log(body));
 };
 
 module.exports = { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes, nextISSTimesForMyLocation };

@@ -7,6 +7,6 @@ nextISSTimesForMyLocation((error, passTimes) => {
   }
 
   passTimes.forEach((passTime) => {
-    console.log(passTime);
+    console.log(`Next pass at ${passTime.risetime} for ${passTime.duration} seconds!`);
   })
 });

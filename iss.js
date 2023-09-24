@@ -26,6 +26,10 @@ const fetchCoordsByIP = function(ip, callback) {
     }
 
     const data = JSON.parse(body);
+    if (!data.success) {
+      return callback(`Error: ${data.message}`, null);
+    }
+
     const output = {};
     output.latitude = data.latitude;
     output.longitude = data.longitude;

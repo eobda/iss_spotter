@@ -26,8 +26,9 @@ const fetchCoordsByIP = function(ip, callback) {
     }
 
     const data = JSON.parse(body);
+
     if (!data.success) {
-      return callback(`Error: ${data.message}`, null);
+      return callback(`Success status was false. Server message says: ${data.message}`, null);
     }
 
     const output = {};

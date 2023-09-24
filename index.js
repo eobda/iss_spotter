@@ -7,6 +7,8 @@ nextISSTimesForMyLocation((error, passTimes) => {
   }
 
   passTimes.forEach((passTime) => {
-    console.log(`Next pass at ${passTime.risetime} for ${passTime.duration} seconds!`);
+    // convert epoch time date to human readable date
+    const date = new Date(passTime.risetime *1000);
+    console.log(`Next pass at ${date} for ${passTime.duration} seconds!`);
   })
 });

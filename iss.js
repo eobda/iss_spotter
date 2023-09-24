@@ -125,7 +125,7 @@ const nextISSTimesForMyLocation = function(callback) {
           return;
         }
 
-        console.log('It worked! Returned data:', data);
+        callback(null, data);
       });
 
     });

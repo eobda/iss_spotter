@@ -15,7 +15,8 @@ Makes a request to ipwho.is using the provided IP address to get its geographica
 -Returns: Promise of request for lat/lon
 */
 const fetchCoordsByIP = function(body) {
-
+  const ip = JSON.parse(body).ip;
+  return request(`http://ipwho.is/${ip}`);
 };
 
 module.exports = { fetchMyIP, fetchCoordsByIP };

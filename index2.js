@@ -2,4 +2,5 @@ const { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes } = require('./iss_prom
 
 fetchMyIP()
   .then(fetchCoordsByIP)
+  .then(fetchISSFlyOverTimes)
   .then(body => console.log(body));

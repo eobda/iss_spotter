@@ -40,7 +40,7 @@ Returns (via callback):
 *   The lat and lng as an object (null if error). Example: { latitude: '49.27670', longitude: '-123.13000' }
 */
 const fetchCoordsByIP = function(ip, callback) {
-  request(`'http://ipwho.is/${ip}`, (error, response, body) => {
+  request(`http://ipwho.is/${ip}`, (error, response, body) => {
     if (error) {
       callback(error, null);
       return;
@@ -109,11 +109,18 @@ const nextISSTimesForMyLocation = function(callback) {
   
   fetchMyIP((error, ip) => {
     if (error) {
-      console.log("It didn't work!", error);
+      callback(error, null);
       return;
     }
 
-    return callback(null, ip);
+    fetchCoordsByIP(ip, (error, data) => {
+      if (error) {
+        callback(error, null);
+        return;
+      }
+
+      console.log('It worked! Returned coordinates:', data);
+    });
   });
   
 };

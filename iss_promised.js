@@ -18,4 +18,4 @@ const fetchCoordsByIP = function(body) {
 
 };
 
-module.exports = { fetchMyIP };
+module.exports = { fetchMyIP, fetchCoordsByIP };

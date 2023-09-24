@@ -25,7 +25,8 @@ Requests data from https://iss-flyover.herokuapp.com using provided lat/long dat
 - Returns: Promise of request for fly over data, returned as JSON string
 */
 const fetchISSFlyOverTimes = function(body) {
-
+  const { latitude, longitude } = JSON.parse(body);
+  return request(`https://iss-flyover.herokuapp.com/json/?lat=${latitude}&lon=${longitude}`);
 };
 
 module.exports = { fetchMyIP, fetchCoordsByIP };
